@@ -1,9 +1,33 @@
 {
-  "name": "Bread++",
+  "name": "theloaflanguage",
+  "description": "The Official Programming Language For Bread.",
+  "keywords": [
+    "bread",
+    "breadLang",
+    "language",
+    "programming language",
+    "nodejs",
+    "javascript",
+    "regex"
+  ],
+  "version": "1.0.1",
+  "homepage": "https://github.com/MDxWARRIORxOP/TheLoafLanguage#readme",
+  "bugs": {
+    "url": "https://github.com/MDxWARRIORxOP/TheLoafLanguage/issues",
+    "email": "Kingerious@circel.co"
+  },
   "packageManager": "yarn@3.2.4",
   "main": "index.js",
-  "license": "BSD 3-Clause",
+  "license": "BSD-3-Clause",
   "bin": {
     "bread": "./index.js"
+  },
+  "author": "Kingerious <kingerious@circel.co>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MDxWARRIORxOP/TheLoafLanguage.git"
+  },
+  "scripts": {
+    "test": "node index.js test.loaf"
   }
 }
