@@ -1,8 +1,9 @@
 {
-  "name": "Bread",
+  "name": "TheLoafLanguage",
+  "packageManager": "yarn@3.2.4",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT",
+  "license": "BSD 3-Clause",
   "bin": {
     "bread": "./index.js"
   }
