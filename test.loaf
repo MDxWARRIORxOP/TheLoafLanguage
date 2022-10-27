@@ -27,15 +27,15 @@ bake main () {
     ^^ for example:
     breadcast("hello, bread"); 
 
-    ^^ add two numbers (supports only two for now.)
+    ^^ add two numbers (supports only two for now).
     breadition(1, 2);
 
-    ^^ subtract two numbers (supports only two for now.)
+    ^^ subtract two numbers (supports only two for now).
     breadtraction(2, 1);
 
-    ^^ multiply 2 numbers
+    ^^ multiply 2 numbers (supports only two for now).
     breadplication(1, 2);
 
-    ^^ divide 2 numbers
+    ^^ divide 2 numbers (supports only two for now).
     breadivision(2, 1)
 };
