@@ -7,7 +7,7 @@ const vars = [];
  * @param {String} msg
  */
 function error(msg) {
-  throw new Error(`[BREAD-ERROR] ${msg} \n\n\n You burnt your bread.`);
+  throw `[BREAD-ERROR] ${msg} \n\n\n You burnt your bread.`
 }
 
 /**
@@ -55,7 +55,10 @@ function readForVarString(line) {
     );
 
     vars.push({ varName, varValue, varConstant });
+    return true;
   }
+
+  return false;
 }
 
 /**
@@ -100,7 +103,11 @@ function readForVarNumber(line) {
       varValue,
       varConstant,
     });
+
+    return true;
   }
+
+  return false;
 }
 
 /**
@@ -145,7 +152,11 @@ function readForVarBoolean(line) {
       varValue,
       varConstant,
     });
+
+    return true;
   }
+
+  return false;
 }
 
 /**
@@ -185,7 +196,160 @@ function readForFunctions(line) {
         console.log(e.varValue);
       }
     });
+
+    return true;
   }
+
+  // addition
+  const addIndex = line.search(/breadition\([0-9]*, [0-9]*\)/i);
+
+  if (addIndex != -1) {
+    const openParenthesisIndex = line.indexOf("(");
+    const closeParenthesisIndex = line.indexOf(")");
+
+    if (openParenthesisIndex == -1 || closeParenthesisIndex == -1) {
+      error(`Syntax Error.\n\n(${line})`);
+    }
+
+    const commaIndex = line.indexOf(",");
+
+    if (commaIndex == -1) {
+      error(`Syntax Error.\n\n(${line})`);
+    }
+
+    try {
+      const string1 = line.substring(openParenthesisIndex + 1, commaIndex);
+      const string2 = line.substring(commaIndex + 1, closeParenthesisIndex);
+
+      const number1 = string1.includes(".")
+        ? parseFloat(string1)
+        : parseInt(string1);
+
+      const number2 = string2.includes(".")
+        ? parseFloat(string2)
+        : parseInt(string2);
+
+      const sum = number1 + number2;
+      console.log(sum);
+    } catch (error) {
+      error(`Error parsing numbers.\n\n${line}`);
+    }
+
+    return true;
+  }
+
+  const subtractIndex = line.search(/breadtraction\([0-9]*, [0-9]*\)/i);
+
+  if (subtractIndex != -1) {
+    const openParenthesisIndex = line.indexOf("(");
+    const closeParenthesisIndex = line.indexOf(")");
+
+    if (openParenthesisIndex == -1 || closeParenthesisIndex == -1) {
+      error(`Syntax Error.\n\n(${line})`);
+    }
+
+    const commaIndex = line.indexOf(",");
+
+    if (commaIndex == -1) {
+      error(`Syntax Error.\n\n(${line})`);
+    }
+
+    try {
+      const string1 = line.substring(openParenthesisIndex + 1, commaIndex);
+      const string2 = line.substring(commaIndex + 1, closeParenthesisIndex);
+
+      const number1 = string1.includes(".")
+        ? parseFloat(string1)
+        : parseInt(string1);
+
+      const number2 = string2.includes(".")
+        ? parseFloat(string2)
+        : parseInt(string2);
+
+      const sum = number1 - number2;
+      console.log(sum);
+    } catch (error) {
+      error(`Error parsing numbers.\n\n${line}`);
+    }
+
+    return true;
+  }
+
+  const divisionIndex = line.search(/breadivision\([0-9]*, [0-9]*\)/i);
+
+  if (divisionIndex != -1) {
+    const openParenthesisIndex = line.indexOf("(");
+    const closeParenthesisIndex = line.indexOf(")");
+
+    if (openParenthesisIndex == -1 || closeParenthesisIndex == -1) {
+      error(`Syntax Error.\n\n(${line})`);
+    }
+
+    const commaIndex = line.indexOf(",");
+
+    if (commaIndex == -1) {
+      error(`Syntax Error.\n\n(${line})`);
+    }
+
+    try {
+      const string1 = line.substring(openParenthesisIndex + 1, commaIndex);
+      const string2 = line.substring(commaIndex + 1, closeParenthesisIndex);
+
+      const number1 = string1.includes(".")
+        ? parseFloat(string1)
+        : parseInt(string1);
+
+      const number2 = string2.includes(".")
+        ? parseFloat(string2)
+        : parseInt(string2);
+
+      const sum = number1 / number2;
+      console.log(sum);
+    } catch (error) {
+      error(`Error parsing numbers.\n\n${line}`);
+    }
+
+    return true;
+  }
+
+  const multiplicationIndex = line.search(/breadplication\([0-9]*, [0-9]*\)/i);
+
+  if (multiplicationIndex != -1) {
+    const openParenthesisIndex = line.indexOf("(");
+    const closeParenthesisIndex = line.indexOf(")");
+
+    if (openParenthesisIndex == -1 || closeParenthesisIndex == -1) {
+      error(`Syntax Error.\n\n(${line})`);
+    }
+
+    const commaIndex = line.indexOf(",");
+
+    if (commaIndex == -1) {
+      error(`Syntax Error.\n\n(${line})`);
+    }
+
+    try {
+      const string1 = line.substring(openParenthesisIndex + 1, commaIndex);
+      const string2 = line.substring(commaIndex + 1, closeParenthesisIndex);
+
+      const number1 = string1.includes(".")
+        ? parseFloat(string1)
+        : parseInt(string1);
+
+      const number2 = string2.includes(".")
+        ? parseFloat(string2)
+        : parseInt(string2);
+
+      const sum = number1 * number2;
+      console.log(sum);
+    } catch (error) {
+      error(`Error parsing numbers.\n\n${line}`);
+    }
+
+    return true;
+  }
+
+  return false;
 }
 
 // checks
@@ -201,6 +365,10 @@ const fileContent = fs.readFileSync(process.argv[2]).toString();
 if (fileContent.length == 0) error("The specified Loaf file is empty.");
 
 const mainFunc = fileContent.match(/bake main \(\) \{(.|\n|\r)*\}/gim);
+
+if (!mainFunc || !mainFunc[0]) {
+  error("No Main Function found.");
+}
 
 const linesRaw = mainFunc[0].split("\n");
 const lines = linesRaw.map((l) => l.split("\r"));

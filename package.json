@@ -28,6 +28,6 @@
     "url": "https://github.com/MDxWARRIORxOP/TheLoafLanguage.git"
   },
   "scripts": {
-    "test": "node index.js test.loaf"
+    "test": "yarn node index.js test.loaf"
   }
 }
