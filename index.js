@@ -7,7 +7,7 @@ const vars = [];
  * @param {String} msg
  */
 function error(msg) {
-  throw `[BREAD-ERROR] ${msg} \n\n\n You burnt your bread.`
+  throw `[BREAD-ERROR] ${msg} \n\n\n You burnt your bread.`;
 }
 
 /**
@@ -357,7 +357,7 @@ if (!process.argv[2]) error("No Loaf file specified.");
 if (!process.argv[2].endsWith(".loaf"))
   error("That is not a valid .loaf file.");
 if (!fs.existsSync(process.argv[2]))
-  error("The Loaf file specified dosent exist.");
+  error("The Loaf file specified doesn't exist.");
 
 // main stuff
 const fileContent = fs.readFileSync(process.argv[2]).toString();
