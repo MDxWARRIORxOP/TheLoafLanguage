@@ -10,7 +10,7 @@ bake main () {
     bagel hello = "bread";
 
     ^^ a mutable variable
-    bread hey = "there";
+    bread hey = "there";`
 
     ^^ a non-mutable boolean variable
     burger nice = true;
@@ -32,6 +32,18 @@ bake main () {
 
     ^^ to print something without using variables, use double quotes
     ^^ for example:
-    breadcast("hello, bread"); 
+    breadcast("hello, bread");
+
+    ^^ add two numbers (supports only two for now.)
+    breadition(1, 2);
+
+    ^^ subtract two numbers (supports only two for now.)
+    breadtraction(2, 1);
+
+    ^^ multiply 2 numbers
+    breadplication(1, 2);
+
+    ^^ divide 2 numbers
+    breadivision(2, 1)
 };
 ```
